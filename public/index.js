@@ -50,24 +50,71 @@ else {
 //Galeria/typ samochodu
 const typePassenger = document.querySelector('#type-passenger');
 const typeCargo = document.querySelector('#type-cargo');
+const carImages = document.querySelectorAll('.carousel-flex-image img');
+const carousel = document.querySelector('#carousel');
+const dots = document.querySelectorAll('.dot');
+
+// Zmiana zdjec w karuzeli
+
+const passengerImages = [
+  { src: 'assets/car-red.png', alt: 'Red car' },
+  { src: 'assets/car-black.png', alt: 'Black car' },
+  { src: 'assets/car-black-close-up.png', alt: 'Black car close-up' },
+  { src: 'assets/car-red.png', alt: 'Red car' },
+  { src: 'assets/car-black.png', alt: 'Black  car' }
+];
+
+const cargoImages = [
+  { src: 'assets/van1.png', alt: 'Cargo van 1' },
+  { src: 'assets/van2.png', alt: 'Cargo van 2' },
+  { src: 'assets/van3.png', alt: 'Cargo van 3' },
+  { src: 'assets/van4.png', alt: 'Cargo van 4' },
+  { src: 'assets/van5.png', alt: 'Cargo van 5' }
+];
+
+const updateCarouselImages = (imageData) => {
+  carImages.forEach((img, index) => {
+    img.src = imageData[index].src;
+    img.alt = imageData[index].alt;
+  });
+};
+
+const resetDots = () => {
+  dots.forEach(dot => {
+    dot.classList.remove('text-tertiary');
+  });
+  dots[0].classList.add('text-tertiary');
+};
+
+const resetCarouselPosition = () => {
+  carousel.style.transform = 'translateX(0)';
+};
 
 typePassenger.addEventListener('click', () => {
   typePassenger.classList.add('type-active');
   typeCargo.classList.remove('type-active');
+
+  updateCarouselImages(passengerImages);
+  
+  resetDots();
+  resetCarouselPosition();
 });
 
 typeCargo.addEventListener('click', () => {
   typeCargo.classList.add('type-active');
   typePassenger.classList.remove('type-active');
+
+  updateCarouselImages(cargoImages);
+  
+  resetDots();
+  resetCarouselPosition();
 });
 
+
 // Karuzela zdjec
-const carousel = document.querySelector('#carousel');
-const carImage = document.querySelector('.carousel-flex-image');
-const dots = document.querySelectorAll('.dot');
 
 const getCarImageFlexBasis = () => {
-  const style = window.getComputedStyle(carImage);
+  const style = window.getComputedStyle(carImages[0]);
   return parseInt(style.width, 10);
 };
 
