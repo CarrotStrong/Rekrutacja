@@ -87,7 +87,11 @@ const resetDots = () => {
 };
 
 const resetCarouselPosition = () => {
-  carousel.style.transform = 'translateX(0)';
+  if (window.innerWidth < 768) {
+    carousel.scrollLeft = 0;
+  } else {
+    carousel.style.transform = 'translateX(0)';
+  }
 };
 
 typePassenger.addEventListener('click', () => {
