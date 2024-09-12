@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital@0;1&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn{
+    @apply py-3 px-6 rounded-lg text-ligular font-semibold -tracking-[2%];
+}
+
+.trans{
+    @apply transition duration-300 ease-in;
+}
+
+.trans2{
+    @apply transition-all duration-300 ease-out;
+}
+
+.carousel-flex-image{
+    @apply basis-[20rem] sm:basis-[28rem] md:basis-[37.5rem] lg:basis-[44rem] flex-shrink-0;
+}
+
+.type-active{
+    @apply text-tertiary font-semibold border-b border-tertiary;
+}
+
+.overlayOpen{
+    @apply w-full visible;
+}
+
+.menuOpen{
+    @apply w-[70%]
+}
+
+
